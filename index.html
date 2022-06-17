@@ -8,18 +8,46 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
+    <link rel="stylesheet" href="assets/css/style.css">
+
     <title>Todo app</title>
 
 
 </head>
 
 <body>
+    <div class="container">
+        <div class="top__bg">
+            <img src="assets/img/bg-desktop-dark.jpg" class="bg__desktop">
+            <img src="assets/img/bg-mobile-dark.jpg" class="bg__mobile">
 
-    Todo
+            <div class="todo__container grid">
+                <div class="header">
+                    <h1 class="title">TODO</h1>
+                    <div> <img src="assets/img/icon-sun.svg" alt=""></div>
+                </div>
+                <form>
+                    <div class="add__todo">
+                        <div>
+                            <label class="checkbox__container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="text" id="add-todo" placeholder="Create a new todo...">
+                        </div>
+                    </div>
+                </form>
+                <div class="todo__body">
 
-    <!-- Add dynamic number -->items left All Active Completed Clear Completed Drag and drop to reorder list
+                </div>
+            </div>
 
-
+        </div>
+    </div>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>
