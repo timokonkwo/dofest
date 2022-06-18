@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: 'Josefin Sans', sans-serif;
+    /* font-family: 'Josefin Sans', sans-serif; */
     background-color: var(--body-bg);
 }
 
@@ -51,7 +51,7 @@ ul {
 
 .todo__container {
     max-width: 450px;
-    row-gap: 1.5rem;
+    row-gap: 2rem;
     color: #fff;
     margin: 0 auto;
     margin-top: -10rem;
@@ -74,6 +74,7 @@ ul {
     background-color: var(--todo-bg);
     padding: 1rem 1.5rem;
 }
+
 
 /* Customize the label (the container) */
 
@@ -98,7 +99,6 @@ ul {
     cursor: pointer;
     height: 0;
     width: 0;
-    
 }
 
 
@@ -108,17 +108,15 @@ ul {
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
+    height: 23px;
+    width: 23px;
+    /* background-color: #eee; */
+    border: 1px solid hsla(236, 33%, 92%, .2);
     border-radius: 5rem;
 }
 
-
-/* On mouse-over, add a grey background color */
-
-.container:hover input~.checkmark {
-    background-color: #ccc;
+.checkmark:hover {
+    border: 5px solid linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
 
 
@@ -148,8 +146,8 @@ ul {
 /* Style the checkmark/indicator */
 
 .container .checkmark:after {
-    left: 9px;
-    top: 5px;
+    left: 7px;
+    top: 3.5px;
     width: 4px;
     height: 10px;
     border: solid white;
@@ -166,4 +164,18 @@ ul {
     background: hsl(235, 24%, 19%);
     font-size: 1.2rem;
     color: #fff;
+}
+
+.todo__list {
+    row-gap: 0rem;
+}
+
+.todo {
+    background-color: var(--todo-bg);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-content: center;
+    column-gap: 1rem;
+    font-size: 1.3rem;
+    border-bottom: 1px solid hsl(237, 14%, 26%);
 }
