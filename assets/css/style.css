@@ -2,9 +2,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Public+Sans:wght@700&display=swap');
 :root {
+    /* Colors */
     --body-bg: hsl(235, 21%, 11%);
     --todo-bg: hsl(235, 24%, 19%);
     --check-bg: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    --d-dark-gray: hsl(233, 14%, 35%);
+    --d-dark-gray-alt: hsl(237, 14%, 26%);
 }
 
 * {
@@ -14,8 +17,9 @@
 }
 
 body {
-    /* font-family: 'Josefin Sans', sans-serif; */
+    font-family: 'Josefin Sans', sans-serif;
     background-color: var(--body-bg);
+    height: 100vh;
 }
 
 img {
@@ -34,28 +38,43 @@ ul {
     display: grid;
 }
 
+.flex {
+    display: flex;
+}
+
 .container {
-    height: auto;
+    /* height: auto; */
     width: 100%;
     position: absolute;
+    margin-bottom: .5rem
+}
+
+.bg__desktop,
+.bg__mobile {
+    width: 100%;
 }
 
 .bg__desktop {
-    width: 100%;
-    max-height: 250px;
+    max-height: 300px;
 }
 
 .bg__mobile {
     display: none;
 }
 
+
+/* container of the todo */
+
 .todo__container {
-    max-width: 450px;
+    max-width: 600px;
     row-gap: 2rem;
     color: #fff;
     margin: 0 auto;
-    margin-top: -10rem;
+    margin-top: -12rem;
 }
+
+
+/* header class div contains Heading text and theme icon */
 
 .header {
     display: flex;
@@ -63,17 +82,23 @@ ul {
     width: 100%;
 }
 
+
+/* Heading title */
+
 .title {
     letter-spacing: .9rem;
 }
 
+
+/* Div containing the todo input */
+
 .add__todo {
-    display: flex;
-    column-gap: 1rem;
     align-items: center;
     background-color: var(--todo-bg);
-    padding: 1rem 1.5rem;
 }
+
+
+/*=========== CUSTOM CHECKBOX START ===============*/
 
 
 /* Customize the label (the container) */
@@ -157,6 +182,12 @@ ul {
     transform: rotate(45deg);
 }
 
+
+/*=========== CUSTOM CHECKBOX END ===============*/
+
+
+/* Todo input */
+
 #add-todo {
     width: 100%;
     outline: none;
@@ -166,16 +197,96 @@ ul {
     color: #fff;
 }
 
-.todo__list {
-    row-gap: 0rem;
+.todo,
+.todo__footer,
+.add__todo {
+    padding: 1rem 1.5rem;
+    column-gap: 1rem;
 }
 
+
+/* Todo li item */
+
 .todo {
-    background-color: var(--todo-bg);
-    padding: 1rem 1.5rem;
     display: flex;
     align-content: center;
-    column-gap: 1rem;
     font-size: 1.3rem;
     border-bottom: 1px solid hsl(237, 14%, 26%);
+}
+
+.add__todo,
+.todo__body {
+    border-radius: .5rem;
+}
+
+
+/* Container of the added todo lists */
+
+.todo__body {
+    /* margin-top: -.5rem; */
+    background-color: var(--todo-bg);
+    overflow: hidden;
+}
+
+.categories {
+    margin-left: 2.5rem;
+    column-gap: .5rem;
+}
+
+.todo:first-child label:last-child {
+    text-decoration: line-through;
+    color: hsl(233, 14%, 35%);
+}
+
+.todo__footer {
+    justify-content: space-between;
+}
+
+#items-left,
+#completed {
+    font-weight: bold;
+    color: var(--dark-gray);
+}
+
+#items-left,
+#all,
+#active,
+#completed,
+#clear-completed {
+    cursor: pointer;
+}
+
+.drag__info {
+    text-align: center;
+    color: hsl(234, 11%, 52%);
+}
+
+
+/*=========== Media Queries ============*/
+
+
+/* Bring down things a bit */
+
+@media only screen and (min-width: 768px) {
+    .bg__desktop {
+        height: 300px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .bg__desktop {
+        display: none;
+    }
+    .bg__mobile {
+        display: initial;
+        height: 250px;
+    }
+    .todo__container {
+        width: 85%;
+        margin-top: -12rem;
+        /* padding: 3.5rem 0; */
+    }
+    .categories {
+        display: none;
+    }
 }
