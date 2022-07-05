@@ -206,6 +206,7 @@ ul {
     position: absolute;
     right: 5%;
     width: 1rem;
+    transition: .4s;
 }
 
 .todo,
@@ -296,14 +297,6 @@ ul {
     .bg__desktop {
         height: 190px;
     }
-
-    #delete-todo {
-        display: none;
-    }
-
-    .todo:hover #delete-todo {
-        display: inline;
-    }
     .categories {
         left: 50%;
         transform: translateX(-69%);
@@ -313,8 +306,6 @@ ul {
     .categories p {
         margin: 0 .4rem;
     }
-
-
 }
 
 @media only screen and (max-width: 767px) {
@@ -345,4 +336,18 @@ ul {
         font-size: .8rem;
         margin-bottom: 5rem;
     }
+}
+
+width: 100%;
+justify-content: center;
+font-size: .9rem;
+
+}
+.drag__info {
+    position: relative;
+    top: 4.5rem;
+    font-size: .8rem;
+    margin-bottom: 5rem;
+}
+
 }
