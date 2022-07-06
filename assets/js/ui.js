@@ -5,6 +5,7 @@
 
 
 UICtrl = (function() {
+
     const UISelectors = {
         changeMode: '#change-mode',
         todoInput: '#add-todo',
@@ -19,5 +20,13 @@ UICtrl = (function() {
         completedBtn: '#completed'
     }
 
+    return {
+        populateList: () => 0,
+        addTodoItem: () => 0,
+        deleteTodoItem: () => 0,
+        populateActive: () => 0,
+        populateCompleted: () => 0,
+
+    }
 
 })()

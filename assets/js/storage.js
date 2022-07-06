@@ -5,5 +5,13 @@
 
 
 StorageCtrl = (function() {
-    return
+    const LS = function() {
+
+    }
+
+    return {
+        addToLS: () => 0,
+        deleteFromLS: () => 0,
+        clearCompletedFromLS: () => 0,
+    }
 })()
