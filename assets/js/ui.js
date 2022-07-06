@@ -5,5 +5,16 @@
 
 
 UICtrl = (function() {
-    return
+    const UISelectors = {
+        todoInput: '#add-todo',
+        todoList: '.todo__list',
+        checked: '#checked',
+        todoTitle: '#todo-title',
+        deleteBtn: '#delete-todo',
+        itemLeftBtn: '#items-left',
+        clearCompletedBtn: '#clear-completed',
+        allBtn: '#all',
+        activeBtn: '#active',
+        completedBtn: '#completed'
+    }
 })()
