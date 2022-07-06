@@ -6,6 +6,7 @@
 
 UICtrl = (function() {
     const UISelectors = {
+        changeMode: '#change-mode',
         todoInput: '#add-todo',
         todoList: '.todo__list',
         checked: '#checked',
@@ -17,4 +18,6 @@ UICtrl = (function() {
         activeBtn: '#active',
         completedBtn: '#completed'
     }
+
+
 })()
