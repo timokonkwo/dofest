@@ -14,6 +14,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    transition: .2s;
 }
 
 body {
@@ -252,11 +253,6 @@ ul {
     font-size: .75rem;
 }
 
-.todo:first-child label:last-child {
-    text-decoration: line-through;
-    color: hsl(233, 14%, 35%);
-}
-
 .todo__footer-wrapper {
     position: relative;
     color: hsl(234, 11%, 52%);
@@ -272,8 +268,14 @@ ul {
     color: var(--dark-gray);
 }
 
+.completed-todo {
+    text-decoration: line-through;
+    color: hsl(233, 14%, 35%);
+}
+
 #items-left,
 #all,
+#delete-todo,
 #active,
 #completed,
 #clear-completed {
@@ -336,18 +338,4 @@ ul {
         font-size: .8rem;
         margin-bottom: 5rem;
     }
-}
-
-width: 100%;
-justify-content: center;
-font-size: .9rem;
-
-}
-.drag__info {
-    position: relative;
-    top: 4.5rem;
-    font-size: .8rem;
-    margin-bottom: 5rem;
-}
-
 }
