@@ -103,7 +103,6 @@ input {
 .add__todo {
     align-items: center;
     background-color: var(--todo-bg);
-    
 }
 
 
@@ -114,6 +113,8 @@ input {
 
 .checkbox__container {
     position: relative;
+    display: flex;
+    align-items: center;
     padding-left: 25px;
     margin-bottom: 1.3rem;
     cursor: pointer;
@@ -351,6 +352,12 @@ input {
         font-size: .8rem;
         margin-bottom: 5rem;
     }
+}
+
+margin-bottom: 5rem;
+
+}
+
 }       margin-bottom: 5rem;
     }
 }
