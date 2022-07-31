@@ -41,7 +41,7 @@ UICtrl = (function() {
                 <input id="checkbox" type="checkbox">
                 <span class="checkmark"></span>
             </label>
-        <label>${todo.name}</label>
+        <p>${todo.name}</p>
         <a id="delete-todo">
             <img id="delete-icon" src="assets/img/icon-cross.svg">
         </a>
