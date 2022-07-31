@@ -8,7 +8,10 @@ Design pattern: Module Pattern
 
 
 # Design
+### Dark Mode ###
 ![Mobile view - dark](./design/mobile-design-dark.jpg)
+
+### Light Mode ###
 ![Mobile view - light](./design/mobile-design-light.jpg)
 
 
