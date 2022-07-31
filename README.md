@@ -8,8 +8,8 @@ Design pattern: Module Pattern
 
 
 # Design
-[Mobile view - dark](./design/mobile-design-dark.jpg)
-[Mobile view - light](./design/mobile-design-light.jpg)
+![Mobile view - dark](./design/mobile-design-dark.jpg)
+![Mobile view - light](./design/mobile-design-light.jpg)
 
 
 # Controllers
