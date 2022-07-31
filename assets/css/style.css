@@ -40,6 +40,11 @@ ul {
     display: grid;
 }
 
+input {
+    outline: none;
+    background: transparent;
+}
+
 .flex {
     display: flex;
 }
@@ -98,6 +103,7 @@ ul {
 .add__todo {
     align-items: center;
     background-color: var(--todo-bg);
+    
 }
 
 
@@ -195,7 +201,7 @@ ul {
     width: 100%;
     outline: none;
     border: none;
-    background: hsl(235, 24%, 19%);
+    background: transparent;
     font-size: .9rem;
     color: #fff;
 }
@@ -345,9 +351,6 @@ ul {
         font-size: .8rem;
         margin-bottom: 5rem;
     }
-}
-
-
-}
-
+}       margin-bottom: 5rem;
+    }
 }
