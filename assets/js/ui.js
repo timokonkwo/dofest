@@ -119,14 +119,16 @@ const bgMobile = document.querySelector('.bg__mobile');
 const selectedTheme = localStorage.getItem('selected-theme');
 const selectedIcon = localStorage.getItem('selected-icon');
 
-// Change the background image
+// Change the background image and icon
 const changeBg = () => {
     if (document.body.classList.contains('light-theme')) {
+        document.getElementById('theme-button').classList.remove('ri-sun-line');
         bgDesktop.src = './assets/img/bg-desktop-light.jpg';
         bgMobile.src = './assets/img/bg-mobile-light.jpg'
     } else {
         bgDesktop.src = './assets/img/bg-desktop-dark.jpg';
-        bgMobile.src = './assets/img/bg-mobile-dark.jpg'
+        bgMobile.src = './assets/img/bg-mobile-dark.jpg';
+        document.getElementById('theme-button').classList.add('ri-sun-line');
     }
 }
 
@@ -150,7 +152,9 @@ themeButton.addEventListener('click', () => {
 
     changeBg()
     console.log(bgMobile.src)
-        // Save the current to localStorage
-        // localStorage.setItem('selected-theme', getCurrentTheme());
-        // localStorage.setItem('selected-icon', getCurrentIcon());
+        // Save the current theme to localStorage
+    localStorage.setItem('selected-theme', getCurrentTheme());
+    localStorage.setItem('selected-icon', getCurrentIcon());
 })
+
+changeBg()
