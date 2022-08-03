@@ -106,3 +106,51 @@ UICtrl = (function() {
     }
 
 })()
+
+/*=============== DARK LIGHT THEME ===============*/
+const themeButton = document.getElementById('theme-button');
+const lightTheme = 'light-theme';
+const iconTheme = 'ri-sun-line';
+
+const bgDesktop = document.querySelector('.bg__desktop');
+const bgMobile = document.querySelector('.bg__mobile');
+
+// Previously selected topic (if user selected)
+const selectedTheme = localStorage.getItem('selected-theme');
+const selectedIcon = localStorage.getItem('selected-icon');
+
+// Change the background image
+const changeBg = () => {
+    if (document.body.classList.contains('light-theme')) {
+        bgDesktop.src = './assets/img/bg-desktop-light.jpg';
+        bgMobile.src = './assets/img/bg-mobile-light.jpg'
+    } else {
+        bgDesktop.src = './assets/img/bg-desktop-dark.jpg';
+        bgMobile.src = './assets/img/bg-mobile-dark.jpg'
+    }
+}
+
+// We obtain the current theme that the interface has by validating the light-theme class
+const getCurrentTheme = () => document.body.classList.contains(lightTheme) ? 'light' : 'dark';
+const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-sun-line' : 'ri-moon-line';
+
+
+// We validate if the user previously chose a theme
+if (selectedTheme) {
+    // If the validation is fulfilled, we check to know if we deactivated or activated
+    document.body.classList[selectedTheme === 'light' ? 'add' : 'remove'](lightTheme);
+    themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme);
+}
+
+// Activate / deactivate the theme manually with the button
+themeButton.addEventListener('click', () => {
+    // Add or remove dark / icon theme
+    document.body.classList.toggle(lightTheme);
+    themeButton.classList.toggle(iconTheme);
+
+    changeBg()
+    console.log(bgMobile.src)
+        // Save the current to localStorage
+        // localStorage.setItem('selected-theme', getCurrentTheme());
+        // localStorage.setItem('selected-icon', getCurrentIcon());
+})

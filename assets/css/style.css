@@ -24,6 +24,32 @@ body {
     scroll-behavior: smooth;
 }
 
+
+/* Light theme */
+
+body.light-theme {
+    --body-bg: hsl(236, 33%, 92%);
+    --todo-bg: #fff;
+    background-image: url("./assets/img/bg-mobile-light.jpg");
+}
+
+.light-theme .todo,
+.light-theme #add-todo {
+    color: hsl(235, 19%, 35%);
+}
+
+.light-theme .todo {
+    border-bottom: 1px solid hsl(236, 33%, 92%);
+}
+
+.light-theme .checkmark {
+    border: 1px solid hsl(233, 11%, 84%);
+}
+
+.light-theme .completed-todo {
+    color: hsl(236, 9%, 61%);
+}
+
 img {
     max-width: 100%;
 }
@@ -77,16 +103,23 @@ input {
     row-gap: 1.2rem;
     color: #fff;
     margin: 0 auto;
+    padding-bottom: 1rem;
     margin-top: -10rem;
+    /* box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, .15), -1px -1px 12px 4px rgba(0, 0, 0, .15); */
 }
 
 
 /* header class div contains Heading text and theme icon */
 
 .header {
-    display: flex;
+    display: inline-flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+}
+
+#theme-button {
+    font-size: 1.3rem;
 }
 
 
@@ -103,6 +136,164 @@ input {
 .add__todo {
     align-items: center;
     background-color: var(--todo-bg);
+}
+
+
+/* Todo input */
+
+#add-todo {
+    width: 100%;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: .9rem;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#add-todo::placeholder {
+    font-size: .8rem;
+}
+
+
+/* delete todo */
+
+#delete-todo {
+    position: absolute;
+    right: 5%;
+    width: 1rem;
+    transition: .4s;
+}
+
+.todo,
+.todo__footer,
+.add__todo {
+    padding: .8rem 1.5rem;
+    column-gap: .5rem;
+}
+
+
+/* Todo li item */
+
+.todo {
+    display: inline-flex;
+    font-size: .9rem;
+    border-bottom: 1px solid hsl(237, 14%, 26%);
+    position: relative;
+}
+
+.todo p {
+    margin-top: 3px;
+}
+
+.add__todo,
+.todo__body,
+.categories {
+    border-radius: .18rem;
+}
+
+
+/* Container of the added todo lists */
+
+.todo__body,
+.categories {
+    background-color: var(--todo-bg);
+}
+
+.categories {
+    column-gap: .5rem;
+    text-align: center;
+    position: absolute;
+}
+
+.todo__footer,
+.categories {
+    font-size: .75rem;
+}
+
+.todo__footer-wrapper {
+    position: relative;
+    color: hsl(234, 11%, 52%);
+}
+
+.todo__footer {
+    justify-content: space-between;
+}
+
+#items-left,
+#completed {
+    /* font-weight: bold; */
+    color: var(--dark-gray);
+}
+
+.completed-todo {
+    text-decoration: line-through;
+    color: hsl(233, 14%, 35%);
+}
+
+#items-left,
+#all,
+#delete-todo,
+#active,
+#completed,
+#clear-completed {
+    cursor: pointer;
+}
+
+.drag__info {
+    text-align: center;
+    color: hsl(234, 11%, 52%);
+    font-size: .83rem;
+    margin-bottom: 1rem;
+}
+
+
+/*=========== Media Queries ============*/
+
+@media only screen and (max-width: 767px) {
+    .bg__desktop {
+        display: none;
+    }
+    .todo__container {
+        margin-top: -8.99rem;
+        width: 85%;
+        /* position: relative; */
+    }
+    .bg__mobile {
+        display: initial;
+        height: 180px;
+    }
+    .categories {
+        top: 3.5rem;
+        padding: .7rem;
+        width: 100%;
+        justify-content: center;
+        font-size: .9rem;
+    }
+    .drag__info {
+        position: relative;
+        top: 4.5rem;
+        font-size: .8rem;
+        margin-bottom: 5rem;
+    }
+}
+
+
+/* Bring down things a bit */
+
+@media only screen and (min-width: 768px) {
+    .bg__desktop {
+        height: 190px;
+    }
+    .categories {
+        left: 50%;
+        transform: translateX(-69%);
+        top: .88rem;
+        margin-left: 2.5rem;
+    }
+    .categories p {
+        margin: 0 .4rem;
+    }
 }
 
 
@@ -196,168 +387,6 @@ input {
 /*=========== CUSTOM CHECKBOX END ===============*/
 
 
-/* Todo input */
-
-#add-todo {
-    width: 100%;
-    outline: none;
-    border: none;
-    background: transparent;
-    font-size: .9rem;
-    color: #fff;
-}
-
-#add-todo::placeholder {
-    font-size: .8rem;
-}
-
-
-/* delete todo */
-
-#delete-todo {
-    position: absolute;
-    right: 5%;
-    width: 1rem;
-    transition: .4s;
-}
-
-.todo,
-.todo__footer,
-.add__todo {
-    padding: .8rem 1.5rem;
-    column-gap: .5rem;
-}
-
-
-/* Todo li item */
-
-.todo {
-    display: inline-flex;
-    font-size: .9rem;
-    border-bottom: 1px solid hsl(237, 14%, 26%);
-    position: relative;
-}
-
-.todo p {
-    margin-top: 3px;
-}
-
-.add__todo,
-.todo__body,
-.categories {
-    border-radius: .3.78rem;
-}
-
-
-/* Container of the added todo lists */
-
-.todo__body,
-.categories {
-    background-color: var(--todo-bg);
-}
-
-.categories {
-    column-gap: .5rem;
-    text-align: center;
-    position: absolute;
-}
-
-.todo__footer,
-.categories {
-    font-size: .75rem;
-}
-
-.todo__footer-wrapper {
-    position: relative;
-    color: hsl(234, 11%, 52%);
-}
-
-.todo__footer {
-    justify-content: space-between;
-}
-
-#items-left,
-#completed {
-    /* font-weight: bold; */
-    color: var(--dark-gray);
-}
-
-.completed-todo {
-    text-decoration: line-through;
-    color: hsl(233, 14%, 35%);
-}
-
-#items-left,
-#all,
-#delete-todo,
-#active,
-#completed,
-#clear-completed {
-    cursor: pointer;
-}
-
-.drag__info {
-    text-align: center;
-    color: hsl(234, 11%, 52%);
-    font-size: .83rem;
-    margin-bottom: 1rem;
-}
-
-
-/*=========== Media Queries ============*/
-
-
-/* Bring down things a bit */
-
-@media only screen and (min-width: 768px) {
-    .bg__desktop {
-        height: 190px;
-    }
-    .categories {
-        left: 50%;
-        transform: translateX(-69%);
-        top: .88rem;
-        margin-left: 2.5rem;
-    }
-    .categories p {
-        margin: 0 .4rem;
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    .bg__desktop {
-        display: none;
-    }
-    .todo__container {
-        margin-top: -8.99rem;
-        /* position: relative; */
-    }
-    .bg__mobile {
-        display: initial;
-        height: 180px;
-    }
-    .todo__container {
-        width: 85%;
-    }
-    .categories {
-        top: 4rem;
-        padding: .7rem;
-        width: 100%;
-        justify-content: center;
-        font-size: .9rem;
-    }
-    .drag__info {
-        position: relative;
-        top: 4.5rem;
-        font-size: .8rem;
-        margin-bottom: 5rem;
-    }
-}
-
-margin-bottom: 5rem;
-
-}
-
-}       margin-bottom: 5rem;
-    }
-}
+/*=========== CUSTOM CHECKBOX END ===============*/
+/*=========== CUSTOM CHECKBOX END ===============*/
+/*=========== CUSTOM CHECKBOX END ===============*/
