@@ -15,9 +15,9 @@ UICtrl = (function() {
         todoTitle: '#todo-title',
         itemLeftBtn: '#items-left',
         clearCompletedBtn: document.querySelector('#clear-completed'),
-        allBtn: '#all',
-        activeBtn: '#active',
-        completedBtn: '#completed'
+        allBtn: document.querySelector('#all'),
+        activeBtn: document.querySelector('#active'),
+        completedBtn: document.querySelector('#completed')
     }
 
     /* Clear the input */
@@ -82,7 +82,10 @@ UICtrl = (function() {
     }
 
     /* Display only active todos (hide completed) */
-    const populateActive = () => {
+    const populateActive = allTodos => {
+        /* Filter only the active todos */
+        const todoList = allTodos.filter(item => !item.completed);
+        console.log(todoList);
 
     };
 

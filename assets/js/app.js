@@ -63,7 +63,7 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
         init: function() {
 
             /* Populate the UI with existing Items from LocalStorage */
-            UICtrl.populateList(TodoCtrl.populateUI())
+            UICtrl.populateList(TodoCtrl.populate())
 
             /* Check the already completed tasks */
             UICtrl.checkboxReload();
@@ -79,7 +79,10 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
             UISelectors.todoList.addEventListener('click', deleteTodoClick);
 
             /* Clear all complete todos Event */
-            UISelectors.clearCompletedBtn.addEventListener('click', clearCompleted)
+            UISelectors.clearCompletedBtn.addEventListener('click', clearCompleted);
+
+            /* Active todos event */
+            UISelectors.activeBtn.addEventListener('click', () => UICtrl.populateActive(TodoCtrl.populate()))
         },
 
     }

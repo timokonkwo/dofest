@@ -84,6 +84,7 @@ TodoCtrl = (function() {
         clearCompleteTodos,
         markComplete,
         removeComplete,
-        populateUI: () => (data.todoList)
+        populate: () => (data.todoList),
+
     }
 })()
