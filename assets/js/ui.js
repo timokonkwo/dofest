@@ -78,14 +78,19 @@ UICtrl = (function() {
             `;
         })
 
-        UISelectors.todoList.innerHTML = html
+        UISelectors.todoList.innerHTML = html;
+
+        /* Persist the already checked checkbox */
+        checkboxReload();
     }
 
     /* Display only active todos (hide completed) */
-    const populateActive = allTodos => {
+    const populateActive = function(allTodos) {
         /* Filter only the active todos */
         const todoList = allTodos.filter(item => !item.completed);
-        console.log(todoList);
+
+        /* Populate the UI with only active todos */
+        this.populateList(todoList);
 
     };
 

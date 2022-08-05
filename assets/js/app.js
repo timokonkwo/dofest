@@ -81,7 +81,13 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
             /* Clear all complete todos Event */
             UISelectors.clearCompletedBtn.addEventListener('click', clearCompleted);
 
+            /* All todos event */
+            UISelectors.allBtn.addEventListener('click', () => UICtrl.populateList(TodoCtrl.populate()))
+
             /* Active todos event */
+            UISelectors.activeBtn.addEventListener('click', () => UICtrl.populateActive(TodoCtrl.populate()))
+
+            /* completed todos event */
             UISelectors.activeBtn.addEventListener('click', () => UICtrl.populateActive(TodoCtrl.populate()))
         },
 
