@@ -46,6 +46,10 @@ TodoCtrl = (function() {
 
         /* Save changes to LocalStorage */
         StorageCtrl.saveToLS(data.todoList);
+
+        /* Checking if its better to be able to mark an item as completed from the active tab - Test the UX later */
+
+        UICtrl.populateActive(data.todoList);
     };
 
     const removeComplete = id => {
