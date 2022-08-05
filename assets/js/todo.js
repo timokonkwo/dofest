@@ -38,25 +38,33 @@ TodoCtrl = (function() {
     };
 
     const markComplete = id => {
-        const item = data.todoList[id - 1]
-        item.completed = true;
+        /* Get the index of the item that has the id */
+        const index = data.todoList.findIndex(todoItem => todoItem.id == id);
+
+        /* Mark item as complete */
+        data.todoList[index].completed = true;
 
         /* Save changes to LocalStorage */
         StorageCtrl.saveToLS(data.todoList);
     };
 
     const removeComplete = id => {
-        const item = data.todoList[id - 1];
-        item.completed = false;
+        /* Get the index of the item that has the id */
+        const index = data.todoList.findIndex(todoItem => todoItem.id == id);
+
+        /* remove complete */
+        data.todoList[index].completed = false;
 
         /* Save changes to LocalStorage */
         StorageCtrl.saveToLS(data.todoList);
-
     };
 
     const deleteTodo = id => {
-        const item = data.todoList[id - 1];
-        data.todoList.splice(item.id - 1, 1);
+        /* Get the index of the item that has the id */
+        const index = data.todoList.findIndex(todoItem => todoItem.id == id);
+
+        /* Delete the item */
+        data.todoList.splice(index, 1)
 
         /* Save changes to LocalStorage */
         StorageCtrl.saveToLS(data.todoList);

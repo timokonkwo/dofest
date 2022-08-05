@@ -78,10 +78,15 @@ UICtrl = (function() {
             `;
         })
 
-        UISelectors.todoList.innerHTML += html
+        UISelectors.todoList.innerHTML = html
     }
 
-    /* Fix automatic removing of checkbox on reload, later */
+    /* Display only active todos (hide completed) */
+    const populateActive = () => {
+
+    };
+
+    /* Mark an item completed*/
     const completedTodoItem = e => {
         let todoElement;
         if (e.target.id === 'checkbox' && e.target.checked) {
@@ -128,7 +133,7 @@ UICtrl = (function() {
 
         clearCompletedTodoItems,
 
-        populateActive: () => 0,
+        populateActive,
 
         populateCompleted: () => 0,
     }
