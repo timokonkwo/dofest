@@ -4,7 +4,6 @@
  * Uses Module pattern: IIFEs
  */
 
-
 App = (function(StorageCtrl, TodoCtrl, UICtrl) {
 
     /* UI selectors from UICTRL */
@@ -15,10 +14,11 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
         const text = UISelectors.todoInput.value;
         if (text.length > 2) {
             /* Create a todo Item */
-            const todoItem = TodoCtrl.addTodo(text);
+            const newtodoItem = TodoCtrl.addTodo(text);
 
             /* Add to the DOM */
-            UICtrl.addTodoItem(todoItem);
+            UICtrl.addTodoItem(newtodoItem);
+
         }
 
         e.preventDefault();
@@ -61,6 +61,13 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
     /* Public Functions */
     return {
         init: function() {
+
+            /* Populate the UI with existing Items from LocalStorage */
+            UICtrl.populateList(TodoCtrl.populateUI())
+
+            /* Check the already completed tasks */
+            UICtrl.checkboxReload();
+
             /* Function to Load Event listeners */
             /* Todo Submit event */
             UISelectors.form.addEventListener('submit', addTodoClick);

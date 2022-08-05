@@ -28,7 +28,9 @@ UICtrl = (function() {
     /* Checkbox for completed todos on reload */
     const checkboxReload = () => {
         const complete = document.querySelectorAll('.completed-todo input');
-        Array.from(complete).forEach(item => item.setAttribute("checked", true));
+        Array.from(complete).forEach(item => {
+            item.checked = true;
+        });
     }
 
     /* Function to add new todo to the DOM */
@@ -55,6 +57,29 @@ UICtrl = (function() {
         /* Persist the already checked checkbox */
         checkboxReload();
     };
+
+    const populateList = todoList => {
+        let html = '';
+        todoList.forEach(todo => {
+            let cls;
+            if (todo.completed) cls = 'completed-todo';
+
+            html += `
+            <li class="todo ${cls}" id="item-${todo.id}">
+            <label class="checkbox__container">
+                    <input id="checkbox" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            <p>${todo.name}</p>
+            <a id="delete-todo">
+                <img id="delete-icon" src="assets/img/icon-cross.svg">
+            </a>
+        </li>
+            `;
+        })
+
+        UISelectors.todoList.innerHTML += html
+    }
 
     /* Fix automatic removing of checkbox on reload, later */
     const completedTodoItem = e => {
@@ -90,7 +115,10 @@ UICtrl = (function() {
 
     return {
         UISelectors,
-        populateList: () => 0,
+
+        populateList,
+
+        checkboxReload,
 
         addTodoItem,
 
@@ -150,9 +178,10 @@ themeButton.addEventListener('click', () => {
     document.body.classList.toggle(lightTheme);
     themeButton.classList.toggle(iconTheme);
 
+    // Call change background function when theme icon is clicked;
     changeBg()
-    console.log(bgMobile.src)
-        // Save the current theme to localStorage
+
+    // Save the current theme to localStorage
     localStorage.setItem('selected-theme', getCurrentTheme());
     localStorage.setItem('selected-icon', getCurrentIcon());
 })

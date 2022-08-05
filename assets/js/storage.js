@@ -5,12 +5,25 @@
 
 
 StorageCtrl = (function() {
-    const LS = function() {
 
+    const getTodoListFromLS = () => {
+        let todoList;
+        if (localStorage.getItem('todoList') === null) todoList = [];
+        else {
+            todoList = JSON.parse(localStorage.getItem('todoList'));
+        };
+
+        return todoList;
     }
 
+    const saveToLS = (todoList) => {
+        localStorage.setItem('todoList', JSON.stringify(todoList));
+    }
+
+
     return {
-        addToLS: () => 0,
+        getTodoListFromLS,
+        saveToLS,
         deleteFromLS: () => 0,
         clearCompletedFromLS: () => 0,
     }

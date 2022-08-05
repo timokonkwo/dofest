@@ -14,7 +14,7 @@ TodoCtrl = (function() {
 
     /* Data structure / State */
     const data = {
-        todoList: [],
+        todoList: StorageCtrl.getTodoListFromLS(),
         activeTodos: [],
         currentTodos: null,
         itemsLeft: 0
@@ -31,27 +31,42 @@ TodoCtrl = (function() {
         /* Add to data structure */
         todoList.push(newTodo);
 
+        /* Save to LocalStorage */
+        StorageCtrl.saveToLS(todoList);
+
         return newTodo;
     };
 
     const markComplete = id => {
         const item = data.todoList[id - 1]
         item.completed = true;
+
+        /* Save changes to LocalStorage */
+        StorageCtrl.saveToLS(data.todoList);
     };
 
     const removeComplete = id => {
         const item = data.todoList[id - 1];
         item.completed = false;
+
+        /* Save changes to LocalStorage */
+        StorageCtrl.saveToLS(data.todoList);
+
     };
 
     const deleteTodo = id => {
         const item = data.todoList[id - 1];
         data.todoList.splice(item.id - 1, 1);
+
+        /* Save changes to LocalStorage */
+        StorageCtrl.saveToLS(data.todoList);
     };
 
 
     const clearCompleteTodos = () => {
         data.todoList = data.todoList.filter(item => !item.completed);
+        /* Save changes to LocalStorage */
+        StorageCtrl.saveToLS(data.todoList);
     }
 
     return {
@@ -60,6 +75,7 @@ TodoCtrl = (function() {
         deleteTodo,
         clearCompleteTodos,
         markComplete,
-        removeComplete
+        removeComplete,
+        populateUI: () => (data.todoList)
     }
 })()
