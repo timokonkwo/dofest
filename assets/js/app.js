@@ -82,13 +82,13 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
             UISelectors.clearCompletedBtn.addEventListener('click', clearCompleted);
 
             /* All todos event */
-            UISelectors.allBtn.addEventListener('click', () => UICtrl.populateList(TodoCtrl.populate()))
+            UISelectors.allBtn.addEventListener('click', () => UICtrl.populate(TodoCtrl.populate(), 'all'));
 
             /* Active todos event */
-            UISelectors.activeBtn.addEventListener('click', () => UICtrl.populateActive(TodoCtrl.populate()))
+            UISelectors.activeBtn.addEventListener('click', () => UICtrl.populate(TodoCtrl.populate(), 'active'));
 
             /* completed todos event */
-            // UISelectors.completedBtn.addEventListener('click', () => UICtrl.populateActive(TodoCtrl.populate()))
+            UISelectors.completedBtn.addEventListener('click', () => UICtrl.populate(TodoCtrl.populate(), 'completed'));
         },
 
     }

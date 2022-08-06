@@ -49,7 +49,7 @@ TodoCtrl = (function() {
 
         /* Checking if its better to be able to mark an item as completed from the active tab - Test the UX later */
 
-        UICtrl.populateActive(data.todoList);
+        // UICtrl.populate(data.todoList, 'active');
     };
 
     const removeComplete = id => {
@@ -61,6 +61,10 @@ TodoCtrl = (function() {
 
         /* Save changes to LocalStorage */
         StorageCtrl.saveToLS(data.todoList);
+
+        /* Checking if its better to be able to remove an item as completed from the completed tab - Test the UX later */
+
+        // UICtrl.populate(data.todoList, 'completed');
     };
 
     const deleteTodo = id => {

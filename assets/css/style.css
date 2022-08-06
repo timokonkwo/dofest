@@ -206,6 +206,13 @@ input {
     position: absolute;
 }
 
+
+/* Active category */
+
+.active-category {
+    color: hsl(220, 98%, 61%) !important;
+}
+
 .todo__footer,
 .categories {
     font-size: .75rem;

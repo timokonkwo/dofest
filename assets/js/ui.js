@@ -33,6 +33,21 @@ UICtrl = (function() {
         });
     }
 
+    /* Remove active link from all categories */
+    const ActiveCategory = category => {
+        document.querySelectorAll('.active-category').forEach(item => item.classList.remove('active-category'));
+
+        /* Add active link to the item */
+        if (category === 'active')
+            UISelectors.activeBtn.classList.add('active-category');
+
+        else if (category === 'completed')
+            UISelectors.completedBtn.classList.add('active-category');
+
+        else
+            UISelectors.allBtn.classList.add('active-category');
+    };
+
     /* Function to add new todo to the DOM */
     const addTodoItem = (todo) => {
 
@@ -60,23 +75,32 @@ UICtrl = (function() {
 
     const populateList = todoList => {
         let html = '';
-        todoList.forEach(todo => {
-            let cls;
-            if (todo.completed) cls = 'completed-todo';
+        if (todoList.length) {
+            todoList.forEach(todo => {
+                let cls;
+                if (todo.completed) cls = 'completed-todo';
 
+                html += `
+                <li class="todo ${cls}" id="item-${todo.id}">
+                    <label class="checkbox__container">
+                        <input id="checkbox" type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <p>${todo.name}</p>
+                    <a id="delete-todo">
+                        <img id="delete-icon" src="assets/img/icon-cross.svg">
+                    </a>
+                </li>
+                `;
+            });
+        } else {
             html += `
-            <li class="todo ${cls}" id="item-${todo.id}">
-            <label class="checkbox__container">
-                    <input id="checkbox" type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-            <p>${todo.name}</p>
-            <a id="delete-todo">
-                <img id="delete-icon" src="assets/img/icon-cross.svg">
-            </a>
-        </li>
-            `;
-        })
+                <li class="todo">
+                    <p>No item</p>
+                </li>
+                `;
+        }
+
 
         UISelectors.todoList.innerHTML = html;
 
@@ -85,13 +109,37 @@ UICtrl = (function() {
     }
 
     /* Display only active todos (hide completed) */
-    const populateActive = function(allTodos) {
-        /* Filter only the active todos */
-        const todoList = allTodos.filter(item => !item.completed);
+    const populate = function(allTodos, filter) {
 
-        /* Populate the UI with only active todos */
-        this.populateList(todoList);
+        if (filter === 'active') {
+            /* Filter only the active todos */
+            const todoList = allTodos.filter(item => !item.completed);
 
+            /* Populate the UI with only active todos */
+            this.populateList(todoList);
+
+            /* add active categories */
+            ActiveCategory(filter);
+
+
+
+        } else if (filter === 'completed') {
+
+            /* Filter only the completed todos */
+            const todoList = allTodos.filter(item => item.completed);
+
+            /* Populate the UI with only completed todos */
+            this.populateList(todoList);
+
+            /* add active categories */
+            ActiveCategory(filter);
+        } else if (filter === 'all') {
+            /* Populate the UI with all todos */
+            this.populateList(allTodos);
+
+            /* add active categories */
+            ActiveCategory('all');
+        }
     };
 
     /* Mark an item completed*/
@@ -141,7 +189,7 @@ UICtrl = (function() {
 
         clearCompletedTodoItems,
 
-        populateActive,
+        populate,
 
         populateCompleted: () => 0,
     }
