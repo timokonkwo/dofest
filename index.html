@@ -43,7 +43,7 @@
                 </div>
             </form>
             <div class="todo__body">
-                <ul class="todo__list grid">
+                <ul class="todo__list grid" ondrop="drop(event)" ondragover="allowDrop(event)">
                     <!-- <li class="todo">
                         <label class="checkbox__container" id="item-1">
                                 <input id="checkbox" type="checkbox">
@@ -79,6 +79,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
 
     <script src="assets/js/storage.js "></script>
     <script src="assets/js/todo.js "></script>

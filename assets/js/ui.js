@@ -81,7 +81,7 @@ UICtrl = (function() {
                 if (todo.completed) cls = 'completed-todo';
 
                 html += `
-                <li class="todo ${cls}" id="item-${todo.id}">
+                <li class="todo ${cls}" id="item-${todo.id}" draggable="true" ondragstart="drag(event)">
                     <label class="checkbox__container">
                         <input id="checkbox" type="checkbox">
                         <span class="checkmark"></span>
