@@ -62,6 +62,11 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
     return {
         init: function() {
 
+            // Dragging and sorting
+
+            const todoUL = UISelectors.todoList;
+            new Sortable.create(todoUL)
+
             /* Populate the UI with existing Items from LocalStorage */
             UICtrl.populateList(TodoCtrl.populate())
 
