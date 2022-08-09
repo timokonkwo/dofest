@@ -13,13 +13,17 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
     const addTodoClick = function(e) {
         const text = UISelectors.todoInput.value;
         if (text.length > 2) {
+            
             /* Create a todo Item */
-            const newtodoItem = TodoCtrl.addTodo(text);
+            TodoCtrl.addTodo(text);
 
             /* Add to the DOM */
-            UICtrl.addTodoItem(newtodoItem);
+            UICtrl.addTodoItem();
 
         }
+
+        /* Display items left */
+        UICtrl.itemsLeftCount();
 
         e.preventDefault();
     }
@@ -33,6 +37,9 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
             TodoCtrl.removeComplete(todoItem.id);
         }
 
+        /* Display items left */
+        UICtrl.itemsLeftCount();
+
     }
 
     /* Function to delete todo */
@@ -45,6 +52,9 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
             /* Delete from Data Structure */
             TodoCtrl.deleteTodo(todoElementID.split('-')[1]);
 
+            /* Display items left */
+            UICtrl.itemsLeftCount();
+
             e.preventDefault();
         }
     };
@@ -56,6 +66,9 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
         /* Remove from the DOM */
         UICtrl.clearCompletedTodoItems();
         e.preventDefault();
+
+        /* Display items left */
+        UICtrl.itemsLeftCount();
     }
 
     /* Public Functions */
@@ -63,12 +76,14 @@ App = (function(StorageCtrl, TodoCtrl, UICtrl) {
         init: function() {
 
             // Dragging and sorting
-
             const todoUL = UISelectors.todoList;
             new Sortable.create(todoUL)
 
             /* Populate the UI with existing Items from LocalStorage */
             UICtrl.populateList(TodoCtrl.populate())
+
+            /* Display the number of items left */
+            UICtrl.itemsLeftCount();
 
             /* Check the already completed tasks */
             UICtrl.checkboxReload();

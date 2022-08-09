@@ -209,6 +209,7 @@ input {
 
 .sortable-chosen{
     color: hsl(220, 98%, 61%);
+    cursor: move;
 }
 
 /* Active category */

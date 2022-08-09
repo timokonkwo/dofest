@@ -13,7 +13,7 @@ UICtrl = (function() {
         todoList: document.querySelector('.todo__list'),
         checked: '#checked',
         todoTitle: '#todo-title',
-        itemLeftBtn: '#items-left',
+        itemLeftDisplay: document.querySelector('#items-left'),
         clearCompletedBtn: document.querySelector('#clear-completed'),
         allBtn: document.querySelector('#all'),
         activeBtn: document.querySelector('#active'),
@@ -23,6 +23,30 @@ UICtrl = (function() {
     /* Clear the input */
     const clearInput = () => {
         UISelectors.todoInput.value = '';
+    }
+
+    const itemsLeftCount = () => {
+
+        /* Get the todoList from TodoCtrl */
+        const todoList = TodoCtrl.populate();
+
+        /* Initialize items left */
+        let itemsLeft;
+
+        /* Get the current selected category */
+        const selectedItemCategory = document.querySelector('.active-category').id;
+
+        /* Check the category to know which items are left in other categores */
+        if (selectedItemCategory === 'active'){
+            itemsLeft =  todoList.filter(item => item.completed).length;
+        } else if (selectedItemCategory === 'completed') {
+            itemsLeft =  todoList.filter(item => !item.completed).length;
+        } else {
+            itemsLeft =  todoList.filter(item => !item.completed).length;
+        }
+
+        /* Add items left to the DOM */
+        UISelectors.itemLeftDisplay.textContent = `${itemsLeft} items Left`;
     }
 
     /* Checkbox for completed todos on reload */
@@ -49,22 +73,9 @@ UICtrl = (function() {
     };
 
     /* Function to add new todo to the DOM */
-    const addTodoItem = (todo) => {
+    const addTodoItem = () => {
 
-        /* HTML template */
-        const html = `
-        <li class="todo" id="item-${todo.id}">
-        <label class="checkbox__container">
-                <input id="checkbox" type="checkbox">
-                <span class="checkmark"></span>
-            </label>
-        <p>${todo.name}</p>
-        <a id="delete-todo">
-            <img id="delete-icon" src="assets/img/icon-cross.svg">
-        </a>
-    </li>
-        `
-        UISelectors.todoList.innerHTML += html;
+        populateList(TodoCtrl.populate());
 
         /* Clear the input */
         clearInput()
@@ -121,6 +132,7 @@ UICtrl = (function() {
             /* add active categories */
             ActiveCategory(filter);
 
+            itemsLeftCount();
 
 
         } else if (filter === 'completed') {
@@ -133,12 +145,17 @@ UICtrl = (function() {
 
             /* add active categories */
             ActiveCategory(filter);
+
+            itemsLeftCount();
+
         } else if (filter === 'all') {
             /* Populate the UI with all todos */
             this.populateList(allTodos);
 
             /* add active categories */
             ActiveCategory('all');
+
+            itemsLeftCount();
         }
     };
 
@@ -190,6 +207,8 @@ UICtrl = (function() {
         clearCompletedTodoItems,
 
         populate,
+
+        itemsLeftCount,
 
         populateCompleted: () => 0,
     }
