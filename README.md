@@ -7,7 +7,7 @@ Design pattern: Module Pattern
 [Dofest  - Todo App](https://timokonkwo.com/dofest)
 
 
-# Design
+# UI Designs
 ### Dark Mode ###
 ![Mobile view - dark](./design/mobile-design-dark.jpg)
 
