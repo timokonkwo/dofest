@@ -4,7 +4,7 @@ Built with vanila JavaScript
 
 Design pattern: Module Pattern
 
-[Dofest  - Todo App](https://timokonkwo.com/dofest)
+[Dofest  - Todo App](https://timokonkwo.github.io/dofest)
 
 
 # UI Designs
